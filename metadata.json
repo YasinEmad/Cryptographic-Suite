@@ -1,0 +1,5 @@
+{
+  "name": "Cryptographic Suite: An Interactive Learning Tool",
+  "description": "A web-based educational sandbox for encrypting and decrypting text using a wide variety of classical and modern cryptographic algorithms, visually demonstrating how each one works.",
+  "requestFramePermissions": []
+}
