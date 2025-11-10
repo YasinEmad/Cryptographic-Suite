@@ -1,5 +1,5 @@
 
-export type AlgorithmCategory = 'classical' | 'modern';
+export type AlgorithmCategory = 'symmetric' | 'asymmetric';
 export type CryptoMode = 'encrypt' | 'decrypt';
 export type RequiredInput = 'key' | 'iv' | 'publicKey' | 'privateKey' | 'matrix';
 
