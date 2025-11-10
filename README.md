@@ -1,20 +1,54 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+## Prerequisites
 
-# Run and deploy your AI Studio app
+* Node.js v18+
+* npm or yarn
 
-This contains everything you need to run your app locally.
+## Installation
 
-View your app in AI Studio: https://ai.studio/apps/drive/1u9jRiaKr7ORgOM100m3KqcadYkqlcIHl
+1. **Clone the repository**
 
-## Run Locally
+```bash
+git clone <your-repo-url>
+cd <your-repo-folder>
+```
 
-**Prerequisites:**  Node.js
+2. **Install dependencies**
 
+```bash
+npm install
+# or
+yarn
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+3. **Run the development server**
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## Build for production
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+The output will be in the `dist` folder.
+
+## Preview production build
+
+```bash
+npm run preview
+# or
+yarn preview
+```
+
+---
+
+I can also make a **more detailed version with ESLint, Prettier, and Tailwind setup** if you want. Do you want me to do that?
+
