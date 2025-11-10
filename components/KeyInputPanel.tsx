@@ -49,12 +49,12 @@ export const KeyInputPanel: React.FC<KeyInputPanelProps> = ({ requiredInputs, ke
       case 'privateKey':
         return (
           <div key={input}>
-            <label className="block text-sm font-bold text-cyber-secondary mb-2">{inputLabels[input]}</label>
+            <label className="block text-sm font-bold text-brand-secondary mb-2">{inputLabels[input]}</label>
             <textarea
               value={value}
               onChange={(e) => setKeyInputValue(input, e.target.value)}
               placeholder={inputPlaceholders[input]}
-              className="w-full h-32 p-3 bg-cyber-surface rounded-md border-2 border-transparent focus:border-cyber-primary focus:outline-none focus:ring-0 transition-colors font-mono"
+              className="w-full h-32 p-3 bg-brand-bg rounded-md border-2 border-transparent focus:border-brand-primary focus:outline-none focus:ring-0 transition-colors font-mono"
             />
           </div>
         );
@@ -62,13 +62,13 @@ export const KeyInputPanel: React.FC<KeyInputPanelProps> = ({ requiredInputs, ke
         const placeholderKey = algorithmId === 'hill' && input === 'key' ? 'hill-key' : input;
         return (
           <div key={input}>
-            <label className="block text-sm font-bold text-cyber-secondary mb-2">{inputLabels[input]}</label>
+            <label className="block text-sm font-bold text-brand-secondary mb-2">{inputLabels[input]}</label>
             <input
               type="text"
               value={value}
               onChange={(e) => setKeyInputValue(input, e.target.value)}
               placeholder={inputPlaceholders[placeholderKey] || inputPlaceholders.key}
-              className="w-full p-3 bg-cyber-surface rounded-md border-2 border-transparent focus:border-cyber-primary focus:outline-none focus:ring-0 transition-colors font-mono"
+              className="w-full p-3 bg-brand-bg rounded-md border-2 border-transparent focus:border-brand-primary focus:outline-none focus:ring-0 transition-colors font-mono"
             />
           </div>
         );
@@ -76,8 +76,8 @@ export const KeyInputPanel: React.FC<KeyInputPanelProps> = ({ requiredInputs, ke
   };
 
   return (
-    <div className="p-6 bg-cyber-surface rounded-md space-y-6">
-      <h3 className="text-xl font-bold text-cyber-text">Configuration</h3>
+    <div className="p-6 bg-brand-surface rounded-md space-y-6">
+      <h3 className="text-xl font-bold text-brand-text">Configuration</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {requiredInputs.map(renderInput)}
       </div>
@@ -85,7 +85,7 @@ export const KeyInputPanel: React.FC<KeyInputPanelProps> = ({ requiredInputs, ke
         <div className="flex justify-end">
           <button
             onClick={handleGenerateRsaKeys}
-            className="px-4 py-2 border-2 border-cyber-primary text-cyber-primary font-bold rounded-md hover:bg-cyber-primary hover:text-cyber-bg transition-colors"
+            className="px-4 py-2 border-2 border-brand-primary text-brand-primary font-bold rounded-md hover:bg-brand-primary hover:text-white transition-colors"
           >
             Generate Example Keypair
           </button>

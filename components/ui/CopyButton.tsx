@@ -18,10 +18,10 @@ export const CopyButton: React.FC<CopyButtonProps> = ({ textToCopy }) => {
   return (
     <button
       onClick={handleCopy}
-      className="absolute top-2 right-2 p-2 rounded-md bg-cyber-surface/50 hover:bg-cyber-primary/20 text-cyber-secondary hover:text-cyber-primary transition-colors"
+      className="absolute top-2 right-2 p-2 rounded-md bg-brand-bg/50 hover:bg-brand-primary/20 text-brand-secondary hover:text-brand-primary transition-colors"
     >
       {copied ? (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-cyber-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
         </svg>
       ) : (
