@@ -20,6 +20,9 @@ export const CryptoView: React.FC<CryptoViewProps> = ({
   runCrypto,
   isLoading
 }) => {
+  const isKeyless = selectedAlgorithm.category === 'keyless';
+  const outputLabel = isKeyless ? 'Output / Hash' : 'Output / Ciphertext';
+
   return (
     <div className="space-y-6">
       <div>
@@ -38,7 +41,7 @@ export const CryptoView: React.FC<CryptoViewProps> = ({
           />
         </div>
         <div className="relative">
-          <label className="block text-sm font-bold text-brand-secondary mb-2">Output / Ciphertext</label>
+          <label className="block text-sm font-bold text-brand-secondary mb-2">{outputLabel}</label>
           <textarea
             value={outputText}
             readOnly
@@ -56,19 +59,21 @@ export const CryptoView: React.FC<CryptoViewProps> = ({
       )}
 
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-brand-surface rounded-md">
-        <div className="flex items-center gap-4">
-          <span className="font-bold text-brand-secondary">Mode:</span>
-          <Toggle
-            labelLeft="Encrypt"
-            labelRight="Decrypt"
-            isChecked={mode === 'decrypt'}
-            onToggle={() => setMode(prev => (prev === 'encrypt' ? 'decrypt' : 'encrypt'))}
-          />
-        </div>
+        {!isKeyless && (
+          <div className="flex items-center gap-4">
+            <span className="font-bold text-brand-secondary">Mode:</span>
+            <Toggle
+              labelLeft="Encrypt"
+              labelRight="Decrypt"
+              isChecked={mode === 'decrypt'}
+              onToggle={() => setMode(prev => (prev === 'encrypt' ? 'decrypt' : 'encrypt'))}
+            />
+          </div>
+        )}
         <button
           onClick={runCrypto}
           disabled={isLoading}
-          className="w-full sm:w-auto px-8 py-3 bg-brand-primary text-white font-bold rounded-md hover:opacity-90 transition-all duration-200 disabled:bg-brand-secondary disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className={`w-full sm:w-auto px-8 py-3 bg-brand-primary text-white font-bold rounded-md hover:opacity-90 transition-all duration-200 disabled:bg-brand-secondary disabled:cursor-not-allowed flex items-center justify-center gap-2 ${isKeyless ? 'sm:ml-auto' : ''}`}
         >
           {isLoading ? (
             <>
@@ -80,7 +85,7 @@ export const CryptoView: React.FC<CryptoViewProps> = ({
             </>
           ) : (
             <>
-              <span>Run</span>
+              <span>{isKeyless ? 'Hash' : 'Run'}</span>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
               </svg>

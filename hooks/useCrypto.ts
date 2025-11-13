@@ -19,6 +19,9 @@ export const useCrypto = () => {
     setOutputText('');
     setError(null);
     setKeyInputs({});
+    if (algorithm.category === 'keyless') {
+      setMode('encrypt');
+    }
   }, []);
 
   const setKeyInputValue = useCallback((key: string, value: string | string[][]) => {

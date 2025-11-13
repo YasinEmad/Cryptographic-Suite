@@ -64,4 +64,11 @@ export const ALGORITHMS: Algorithm[] = [
     category: 'symmetric',
     requiredInputs: ['key'],
   },
+  {
+    id: 'sha1',
+    name: 'SHA-1',
+    description: 'A cryptographic hash function that produces a 160-bit (20-character) hash value. Note: SHA-1 is considered insecure for most cryptographic uses.',
+    category: 'keyless',
+    requiredInputs: [],
+  },
 ];

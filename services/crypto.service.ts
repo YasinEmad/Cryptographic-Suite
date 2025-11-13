@@ -6,6 +6,7 @@ import { rc4Crypt } from '../lib/modern/rc4';
 import { aesEncrypt, aesDecrypt } from '../lib/modern/aes';
 import { rsaEncrypt, rsaDecrypt } from '../lib/modern/rsa';
 import { hmacSign } from '../lib/modern/hmac';
+import { sha1Hash } from '../lib/modern/sha1';
 
 const keyToMatrix = (key: string): number[][] => {
     const matrix: number[][] = [[], [], []];
@@ -77,6 +78,12 @@ export async function executeCrypto(
         return "HMAC is a one-way signature algorithm. 'Decryption' is not applicable. Run in 'Encrypt' mode to generate a new signature.";
       }
       return hmacSign(text, inputs.key);
+
+    case 'sha1':
+      if (mode === 'decrypt') {
+        return "SHA-1 is a one-way hash function. 'Decryption' is not applicable. Run in 'Encrypt' mode to generate a new hash.";
+      }
+      return sha1Hash(text);
 
     default:
       throw new Error(`Algorithm '${algorithmId}' is not implemented.`);
