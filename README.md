@@ -1,97 +1,129 @@
+Here's a complete updated README including the **How to Run** section:
+
+````markdown
 # Cryptographic Suite: An Interactive Learning Tool
 
-This project is a web-based educational sandbox for encrypting and decrypting text using a wide variety of classical and modern cryptographic algorithms. It's designed to visually demonstrate how each algorithm works in an interactive and user-friendly environment.
+This project is a web-based educational sandbox for encrypting and decrypting text using a wide variety of classical and modern cryptographic algorithms. It visually demonstrates how each algorithm works in an interactive and user-friendly environment.
 
-## ✨ Features
+## Features
 
 - **Wide Range of Algorithms**: Implements classical, symmetric, asymmetric, and keyless (hashing) algorithms.
-- **Interactive Interface**: A clean, modern UI for entering text, keys, and other parameters, with instant results.
-- **Algorithm Descriptions**: Each algorithm includes a brief, easy-to-understand description of its principles.
-- **Dynamic UI**: The interface adapts to the selected algorithm, only showing the necessary input fields (e.g., Key, IV, Public/Private Keys).
-- **Real-time RSA Key Generation**: Generate 2048-bit RSA key pairs directly in the browser.
-- **Responsive Design**: Fully usable on both desktop and mobile devices.
-- **Copy to Clipboard**: Easily copy the output ciphertext or hash.
-- **Error Handling**: Provides clear error messages for common issues like incorrect key lengths or invalid ciphertext.
-- **Zero Build Setup**: Runs directly in the browser using modern web standards, with no `npm install` or build step required.
+- **Interactive Interface**: Enter text, keys, and parameters with instant results.
+- **Algorithm Descriptions**: Each algorithm has a brief, easy-to-understand explanation.
+- **Dynamic UI**: Only shows input fields required for the selected algorithm.
+- **Real-time RSA Key Generation**: Generate 2048-bit RSA key pairs in the browser.
+- **Responsive Design**: Works on both desktop and mobile devices.
+- **Copy to Clipboard**: Easily copy ciphertext or hash results.
+- **Error Handling**: Displays clear error messages for invalid keys or ciphertext.
 
-## 🚀 Live Demo
+## How to Run
 
-This application is designed to run in a web-based development environment. Simply load the files into a static file server to see it in action.
+This project uses **Vite**, **React**, and **TypeScript**. To run it locally:
 
-## 🛠️ Technology Stack
+1. **Clone the repository**
+```bash
+git clone https://github.com/YasinEmad/Cryptographic-Suite.git
+cd Cryptographic-Suite
+````
 
-- **Frontend**:
-  - [**React**](https://react.dev/): A JavaScript library for building user interfaces.
-  - [**TypeScript**](https://www.typescriptlang.org/): A typed superset of JavaScript that compiles to plain JavaScript.
-  - [**Tailwind CSS**](https://tailwindcss.com/): A utility-first CSS framework for rapid UI development.
-- **Cryptography Libraries (via CDN)**:
-  - [**CryptoJS**](https://cryptojs.gitbook.io/docs): Used for a variety of modern algorithms like AES, RC4, HMAC, and SHA-1.
-  - [**Forge**](https://github.com/digitalbazaar/forge): A native implementation of TLS in JavaScript, used here for its robust RSA implementation.
+2. **Install dependencies**
 
-## 📂 Project Structure
+```bash
+npm install
+```
 
-The project is organized into logical directories to separate concerns:
+3. **Start the development server**
+
+```bash
+npm run dev
+```
+
+4. **Open in browser**
+   Vite will show a local URL (usually `http://localhost:5173`). Open it to see the app.
+
+5. **Build for production (optional)**
+
+```bash
+npm run build
+```
+
+The build files will be in the `dist/` folder, ready to deploy.
+
+> Note: This project loads **CryptoJS** and **Forge** via CDN, so you need an internet connection for cryptography features.
+
+## Technology Stack
+
+* **Frontend**: React, TypeScript, Tailwind CSS
+* **Cryptography Libraries**:
+
+  * **CryptoJS**: AES, RC4, HMAC, SHA-1
+  * **Forge**: RSA key generation and encryption
+
+## Project Structure
 
 ```
 .
-├── App.tsx               # Main application component, orchestrates layout and state.
-├── index.html            # The single HTML entry point, loads CDNs and scripts.
-├── index.tsx             # Renders the React application into the DOM.
-├── metadata.json         # Project metadata.
-├── types.ts              # Contains all TypeScript type definitions.
-│
-├── components/           # Reusable React components.
-│   ├── ui/               # Generic UI elements (Toggle, CopyButton, etc.).
-│   ├── CryptoView.tsx    # Main view for input/output and controls.
-│   ├── KeyInputPanel.tsx # Panel for key/IV/parameter inputs.
-│   └── Sidebar.tsx       # Navigation sidebar for selecting algorithms.
-│
-├── config/               # Application configuration.
-│   └── algorithms.config.ts # Defines all supported algorithms and their properties.
-│
-├── hooks/                # Custom React hooks.
-│   └── useCrypto.ts      # Manages all cryptographic state and logic orchestration.
-│
-├── lib/                  # Core cryptographic algorithm implementations.
-│   ├── classical/        # Implementations of classical ciphers.
-│   └── modern/           # Wrappers for modern crypto libraries (CryptoJS, Forge).
-│
+├── App.tsx               # Main component
+├── index.html            # Single HTML entry point
+├── index.tsx             # Renders React app
+├── metadata.json         # Project metadata
+├── types.ts              # TypeScript types
+├── components/           # Reusable React components
+│   ├── ui/               # Generic UI elements
+│   ├── CryptoView.tsx    # Input/output controls
+│   ├── KeyInputPanel.tsx # Key/IV input panel
+│   └── Sidebar.tsx       # Algorithm selector
+├── config/
+│   └── algorithms.config.ts # Supported algorithms
+├── hooks/
+│   └── useCrypto.ts      # Central state & crypto logic
+├── lib/
+│   ├── classical/        # Classical cipher implementations
+│   └── modern/           # Wrappers for CryptoJS & Forge
 ├── services/
-│   └── crypto.service.ts # A service layer that acts as a router to the correct crypto function.
-│
+│   └── crypto.service.ts # Routes to correct crypto function
 └── utils/
-    └── helpers.ts        # Utility functions (e.g., matrix math for Hill Cipher).
+    └── helpers.ts        # Utility functions (e.g., Hill cipher math)
 ```
 
-## 🧠 How It Works
+## How It Works
 
-The application's logic flows from user interaction in the UI down to the specific cryptographic implementation.
+1. **UI Interaction**: User selects algorithm and enters text/keys.
+2. **State Management**: `useCrypto` hook holds the state for algorithm, text, keys, mode, and errors.
+3. **Execution**: Clicking "Run" or "Hash" triggers `runCrypto`.
+4. **Service Layer**: `crypto.service.ts` routes the request to the correct function in `lib/`.
+5. **Cryptography Layer**:
 
-1.  **UI Interaction (`Sidebar.tsx`, `CryptoView.tsx`)**: The user selects an algorithm from the sidebar. The main view updates to reflect this choice.
-2.  **State Management (`useCrypto.ts`)**: This central hook holds the entire state of the application: the selected algorithm, input/output text, keys, mode (encrypt/decrypt), and loading/error status. When the user changes an input or selects a new algorithm, this hook updates the state.
-3.  **Execution Trigger**: Clicking the "Run" / "Hash" button calls the `runCrypto` function from the `useCrypto` hook.
-4.  **Service Layer (`crypto.service.ts`)**: The `runCrypto` function calls `executeCrypto`, passing the current state. This service acts as a controller, using a `switch` statement on the `algorithmId` to delegate the task to the appropriate function in the `lib/` directory. It also performs initial validation.
-5.  **Cryptography Library (`lib/`)**: This is where the actual cryptographic operations happen.
-    -   Classical ciphers (`monoalphabetic.ts`, `hill.ts`) are implemented in pure TypeScript.
-    -   Modern algorithms (`aes.ts`, `rsa.ts`, `sha1.ts`) are wrappers around the `CryptoJS` and `forge` libraries, which are available globally from the CDN scripts loaded in `index.html`.
-6.  **Result Propagation**: The result (or an error) from the `lib/` function is passed back up through the service layer to the `useCrypto` hook, which updates the state. React then re-renders the `CryptoView` to display the output or error message.
+   * Classical ciphers are implemented in TypeScript.
+   * Modern algorithms use CryptoJS or Forge loaded via CDN.
+6. **Result Propagation**: Output or error is returned to the UI for display.
 
-## 📜 Algorithms Implemented
+## Algorithms Implemented
 
-#### Symmetric (Single Key)
-- **Monoalphabetic Cipher**: A classical substitution cipher.
-- **Hill Cipher**: A classical polygraphic cipher using linear algebra.
-- **Columnar Transposition**: A classical transposition cipher.
-- **RC4**: A modern stream cipher.
-- **AES (CBC, OFB, CTR)**: The Advanced Encryption Standard in three common modes of operation.
-- **HMAC**: Hash-based Message Authentication Code for data integrity and authenticity.
+**Symmetric (Single Key)**
 
-#### Asymmetric (Two Keys)
-- **RSA**: A widely-used public-key cryptosystem. Supports in-browser key generation.
+* Monoalphabetic Cipher
+* Hill Cipher
+* Columnar Transposition
+* RC4
+* AES (CBC, OFB, CTR)
+* HMAC
 
-#### Keyless (Hashing)
-- **SHA-1**: A cryptographic hash function (Note: Included for educational purposes; considered insecure for most modern uses).
+**Asymmetric (Two Keys)**
 
----
+* RSA (2048-bit key support)
 
-> **Disclaimer**: This is an educational tool. Do not use it for sensitive data. The cryptographic implementations are for demonstration purposes and may not be secure against all forms of attack.
+**Keyless (Hashing)**
+
+* SHA-1 (for educational purposes)
+
+> Disclaimer: This is an educational tool. Do not use it for sensitive data. Implementations are for demonstration and may not be secure.
+
+## Live Demo
+
+[cryptographic-suite.vercel.app](https://cryptographic-suite.vercel.app)
+
+```
+
+If you want, I can also **add badges for dependencies, license, and status** to make it look more professional. Do you want me to do that?
+```
