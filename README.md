@@ -1,4 +1,3 @@
-Here's a complete updated README including the **How to Run** section:
 
 ````markdown
 # Cryptographic Suite: An Interactive Learning Tool
@@ -125,5 +124,4 @@ The build files will be in the `dist/` folder, ready to deploy.
 
 ```
 
-If you want, I can also **add badges for dependencies, license, and status** to make it look more professional. Do you want me to do that?
-```
+
