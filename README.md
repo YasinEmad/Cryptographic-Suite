@@ -2,23 +2,6 @@
 
 This project is a web-based educational sandbox for encrypting and decrypting text using a wide variety of classical and modern cryptographic algorithms. It's designed to visually demonstrate how each algorithm works in an interactive and user-friendly environment.
 
-## How to Run
-
-This project uses **Vite**, **React**, and **TypeScript**. Follow these steps to run it locally:
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/YasinEmad/Cryptographic-Suite.git
-cd Cryptographic-Suite
-
-    Install dependencies 
-
-npm install
-
-    Start the development server
-
-npm run dev
-
 ## ✨ Features
 
 - **Wide Range of Algorithms**: Implements classical, symmetric, asymmetric, and keyless (hashing) algorithms.
