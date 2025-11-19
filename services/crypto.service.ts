@@ -66,10 +66,10 @@ export async function executeCrypto(
     case 'rsa':
       if (mode === 'encrypt') {
         if (!inputs.publicKey || typeof inputs.publicKey !== 'string') throw new Error('A public key is required for encryption.');
-        return rsaEncrypt(text, inputs.publicKey);
+        return await rsaEncrypt(text, inputs.publicKey);
       } else {
         if (!inputs.privateKey || typeof inputs.privateKey !== 'string') throw new Error('A private key is required for decryption.');
-        return rsaDecrypt(text, inputs.privateKey);
+        return await rsaDecrypt(text, inputs.privateKey);
       }
 
     case 'hmac':
